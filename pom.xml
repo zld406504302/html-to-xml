@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    
+    <!-- POM stands for "Project Object Model" -->
+    <!-- http://maven.apache.org/pom.html -->
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- The Basics -->
+    <groupId>stever</groupId>
+    <artifactId>tagparser</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.10</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>2.9.1-1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.6.4</version>
+        </dependency>
+    </dependencies>
+    <properties>
+        <!-- Make sure we use UTF-8 and not MacRoman or POSIX for project build and reporting -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+    
+    <!-- Build Settings -->
+    <build>
+        <plugins>
+            <plugin>
+                <!-- Maven Compiler Plugin -->
+                <!-- The default compiler is javac and is used to compile Java sources -->
+                <!-- http://maven.apache.org/plugins/maven-compiler-plugin/ -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <!-- Note: Version 2.3.2 is required by maven-scala-plugin -->
+                <version>2.3.2</version>
+                <configuration>
+                    <!-- Note: JDK version 1.5 is required by maven-scala-plugin -->
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <!-- Maven Scala Plugin -->
+                <!-- Used for compiling/testing/running/documenting Scala code in Maven -->
+                <!-- http://scala-tools.org/mvnsites/maven-scala-plugin/ -->
+                <groupId>org.scala-tools</groupId>
+                <artifactId>maven-scala-plugin</artifactId>
+                <version>2.15.2</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <jvmArgs>
+                        <jvmArg>-Xmx1024m</jvmArg>
+                    </jvmArgs>
+                    <args>
+                        <arg>-deprecation</arg>
+                    </args>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!-- Environment Settings -->
+    <prerequisites>
+        <!-- Maven version required by maven-scala-plugin is 2.0.7 -->
+        <maven>2.0.7</maven>
+    </prerequisites>
+    <repositories>
+        <repository>
+            <id>repo1.maven</id>
+            <name>Maven Central Repo</name>
+            <url>http://repo1.maven.org/maven2/</url>
+        </repository>
+        <repository>
+            <id>repo.typesafe</id>
+            <name>Typesafe Repository</name>
+            <url>http://repo.typesafe.com/typesafe/releases</url>
+        </repository>
+    </repositories>
+</project>
