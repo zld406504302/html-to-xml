@@ -6,4 +6,6 @@
 *.swp
 *.user
 /.idea/
+/*.log
+/*.log.*
 target/

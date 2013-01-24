@@ -19,11 +19,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.scala-lang</groupId>
-            <artifactId>scala-library</artifactId>
-            <version>2.9.1-1</version>
-        </dependency>
-        <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
             <version>1.6.4</version>
@@ -44,55 +39,21 @@
                 <!-- http://maven.apache.org/plugins/maven-compiler-plugin/ -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <!-- Note: Version 2.3.2 is required by maven-scala-plugin -->
                 <version>2.3.2</version>
                 <configuration>
-                    <!-- Note: JDK version 1.5 is required by maven-scala-plugin -->
                     <source>1.6</source>
                     <target>1.6</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <!-- Maven Scala Plugin -->
-                <!-- Used for compiling/testing/running/documenting Scala code in Maven -->
-                <!-- http://scala-tools.org/mvnsites/maven-scala-plugin/ -->
-                <groupId>org.scala-tools</groupId>
-                <artifactId>maven-scala-plugin</artifactId>
-                <version>2.15.2</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <jvmArgs>
-                        <jvmArg>-Xmx1024m</jvmArg>
-                    </jvmArgs>
-                    <args>
-                        <arg>-deprecation</arg>
-                    </args>
                 </configuration>
             </plugin>
         </plugins>
     </build>
 
     <!-- Environment Settings -->
-    <prerequisites>
-        <!-- Maven version required by maven-scala-plugin is 2.0.7 -->
-        <maven>2.0.7</maven>
-    </prerequisites>
     <repositories>
         <repository>
             <id>repo1.maven</id>
             <name>Maven Central Repo</name>
             <url>http://repo1.maven.org/maven2/</url>
-        </repository>
-        <repository>
-            <id>repo.typesafe</id>
-            <name>Typesafe Repository</name>
-            <url>http://repo.typesafe.com/typesafe/releases</url>
         </repository>
     </repositories>
 </project>
