@@ -49,14 +49,14 @@ public class Tag {
 
         // Check the first character here.
         if (!TagParser.isNameFirstChar(name.charAt(0))) {
-            log.error("Attribute ignored due to invalid name char: " + name.charAt(0));
+            log.error("Attribute ignored due to invalid name char: {}", name.charAt(0));
             return false;
         }
 
         // Check the other characters in the name.
         for (int i = 1; i < name.length(); i++) {
             if (!TagParser.isNameFirstChar(name.charAt(i))) {
-                log.error("Attribute ignored due to invalid name char: " + name.charAt(i));
+                log.error("Attribute ignored due to invalid name char: {}", name.charAt(i));
                 return false;
             }
         }

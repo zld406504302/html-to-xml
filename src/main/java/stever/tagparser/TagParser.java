@@ -60,7 +60,7 @@ public class TagParser extends Parser {
      * @throws MaxErrorsException Maximum number of errors reached.
      */
     public ParseToken getNextToken() throws IOException, MaxErrorsException {
-        if (log.isDebugEnabled()) log.debug("getNextToken()");
+        log.debug("getNextToken()");
 
         // Buffer containing text in current context.
         StringBuilder buffer = new StringBuilder();
@@ -342,11 +342,9 @@ public class TagParser extends Parser {
                                 // In this case a warning will be logged and the HTML will be corrected.
                                 log.debug(getInvalidCharErrorMessage(nextChar, getState()));
                                 log.warn("Recovery assumed that '&' is not intended as an entity reference ({})", getCharacterPosition());
-                                if (log.isDebugEnabled()) {
-                                    log.debug("nextChar='" + nextChar + '\'');
-                                    if (stream.getFilename() != null) {
-                                        log.debug("filename=\"" + stream.getFilename() + '"');
-                                    }
+                                log.debug("nextChar='{}'", nextChar);
+                                if (stream.getFilename() != null) {
+                                    log.debug("filename=\"{}\"", stream.getFilename());
                                 }
                                 stream.pushback(nextChar);
                                 stream.pushback("&amp;");
@@ -1077,7 +1075,7 @@ public class TagParser extends Parser {
      * @throws MaxErrorsException Maximum number of errors reached.
      */
     protected Tag getTag(String name) throws IOException, MaxErrorsException {
-        if (log.isDebugEnabled()) log.debug("Entering getTag()");
+        log.debug("Entering getTag()");
 
         Tag tag = new Tag(name, caseSensitive);
         StringBuilder attribute = new StringBuilder();

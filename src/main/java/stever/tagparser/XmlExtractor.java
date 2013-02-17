@@ -284,7 +284,8 @@ public class XmlExtractor {
     }
 
     private static void mapHtmlEntity(String entity, Integer code) {
-        entityMappings.put(entity.toUpperCase(), code);
+        // NOTE: HTML entities are case-sensitive.
+        entityMappings.put(entity, code);
     }
 
     /** These elements are always empty elements. End-tag is redundant for these. */
@@ -464,12 +465,11 @@ public class XmlExtractor {
                 .append('&').append(entityLowerCase).append(';')
                 .toString();
         } else {
-            String entityUpperCase = entityName.toUpperCase();
-            if (!entityMappings.containsKey(entityUpperCase)) {
-                throw new Exception("Unsupported entity name: " + entityUpperCase);
+            if (!entityMappings.containsKey(entityName)) {
+                throw new Exception("Unsupported entity name: " + entityName);
             }
             return (new StringBuilder())
-                .append("&#").append(entityMappings.get(entityUpperCase)).append(';')
+                .append("&#").append(entityMappings.get(entityName)).append(';')
                 .toString();
         }
     }

@@ -52,16 +52,14 @@ public abstract class Parser {
      * @param state Parser machine state.
      */
     protected void setState(Enum state) {
-        if (log.isInfoEnabled()) {
-            if (this.state != state) {
-                if (this.state == null) {
-                    log.info("Initial state is {}.", state);
-                } else {
-                    log.info("Changing state {} to {} state.", this.state, state);
-                }
-            } else if (log.isWarnEnabled()) {
-                log.warn("Changing to same state! ({})", state);
+        if (this.state != state) {
+            if (this.state == null) {
+                log.info("Initial state is {}.", state);
+            } else {
+                log.info("Changing state {} to {} state.", this.state, state);
             }
+        } else {
+            log.warn("Changing to same state! ({})", state);
         }
         this.state = state;
     }
