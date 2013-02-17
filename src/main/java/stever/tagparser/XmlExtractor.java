@@ -459,10 +459,9 @@ public class XmlExtractor {
 
     /** Convert entity reference for valid XML text. */
     private static String xmlEntity(String entityName) throws Exception {
-        String entityLowerCase = entityName.toLowerCase();
-        if (xmlEntities.contains(entityLowerCase)) {
+        if (xmlEntities.contains(entityName)) {
             return (new StringBuilder())
-                .append('&').append(entityLowerCase).append(';')
+                .append('&').append(entityName).append(';')
                 .toString();
         } else {
             if (!entityMappings.containsKey(entityName)) {
